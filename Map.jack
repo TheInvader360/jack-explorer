@@ -1,5 +1,9 @@
 class Map {
     field Array tiles; // the map's tiles (16x10 grid)
+    field int linkedRoomU;
+    field int linkedRoomD;
+    field int linkedRoomL;
+    field int linkedRoomR;
 
     constructor Map new() {
         let tiles = Array.new(160);
@@ -13,10 +17,51 @@ class Map {
         return;
     }
 
-    method void load(int mapID) {
+    method void loadLinkedRoom(Direction d) {
+        if (d = Direction.U()) {
+            do load(linkedRoomU);
+        }
+        if (d = Direction.D()) {
+            do load(linkedRoomD);
+        }
+        if (d = Direction.L()) {
+            do load(linkedRoomL);
+        }
+        if (d = Direction.R()) {
+            do load(linkedRoomR);
+        }
+        return;
+    }
+
+    method void load(int roomID) {
         do clear();
-        if (mapID = 1) {
-            do parseMapData("bbbbbbbbbbbbbbbbb   b      b   bb   b      b   bb              bb              bb              bb      bbbbb   bb   b      b   bb   b      bbbbbbbbbbbbbbbbbbbbb");
+        if (roomID = 1) {
+            do parseTileData("bbbbbbbbbbbbbbbbb              bb              bb              bb              bb              bb              bb              bb              bb              b");
+            let linkedRoomU = -1;
+            let linkedRoomD = 4;
+            let linkedRoomL = -1;
+            let linkedRoomR = 2;
+        }
+        if (roomID = 2) {
+            do parseTileData("bbbbbbbbbbbbbbbbb              bb              bb              bb              bb              bb              bb              bb              bb              b");
+            let linkedRoomU = -1;
+            let linkedRoomD = 5;
+            let linkedRoomL = 1;
+            let linkedRoomR = -1;
+        }
+        if (roomID = 4) {
+            do parseTileData("b              bb              bb              bb              bb               b               b               b               b               bbbbbbbbbbbbbbbb");
+            let linkedRoomU = 1;
+            let linkedRoomD = -1;
+            let linkedRoomL = -1;
+            let linkedRoomR = 5;
+        }
+        if (roomID = 5) {
+            do parseTileData("b              bb              bb              bb              b               b               b               b               b               bbbbbbbbbbbbbbbbb");
+            let linkedRoomU = 2;
+            let linkedRoomD = -1;
+            let linkedRoomL = 4;
+            let linkedRoomR = -1;
         }
         return;
     }
@@ -31,11 +76,7 @@ class Map {
         return;
     }
 
-    method int getTile(int x, int y) {
-        return tiles[(y * 16) + x];
-    }
-
-    method void parseMapData(String encoded) {
+    method void parseTileData(String encoded) {
         var int x, y;
         var char val;
         let x = 0;
@@ -50,4 +91,9 @@ class Map {
         }
         return;
     }
+
+    method int getTile(int x, int y) {
+        return tiles[(y * 16) + x];
+    }
+
 }

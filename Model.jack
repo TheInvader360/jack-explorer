@@ -5,7 +5,7 @@ class Model {
     constructor Model new() {
         let map = Map.new();
         do map.load(1);
-        let player = Player.new(2, 2, Direction.D());
+        let player = Player.new(3, 3, Direction.D());
         return this;
     }
 

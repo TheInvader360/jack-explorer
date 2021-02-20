@@ -28,15 +28,31 @@ class Controller {
             let targetY = player.getY();
             if (key = Direction.U()) {
                 let targetY = targetY - 1;
+                if (targetY < 0) {
+                    do map.loadLinkedRoom(Direction.U());
+                    let targetY = 9;
+                }
             }
             if (key = Direction.D()) {
                 let targetY = targetY + 1;
+                if (targetY > 9) {
+                    do map.loadLinkedRoom(Direction.D());
+                    let targetY = 0;
+                }
             }
             if (key = Direction.L()) {
                 let targetX = targetX - 1;
+                if (targetX < 0) {
+                    do map.loadLinkedRoom(Direction.L());
+                    let targetX = 15;
+                }
             }
             if (key = Direction.R()) {
                 let targetX = targetX + 1;
+                if (targetX > 15) {
+                    do map.loadLinkedRoom(Direction.R());
+                    let targetX = 0;
+                }
             }
 
             let targetTile = map.getTile(targetX, targetY);
