@@ -1,0 +1,61 @@
+class View {
+    field Model model;
+
+    constructor View new(Model aModel) {
+        let model = aModel;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void draw() {
+        var int x, y, tile;
+        var Map map;
+        var Player player;
+
+        let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
+        let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
+
+        // clear the screen
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 511, 255);
+
+        // draw the map
+        do Screen.setColor(true);
+        let x = 0;
+        let y = 0;
+        while (y < 10) {
+            while (x < 16) {
+                let tile = map.getTile(x, y);
+                if (tile = 98) { // b = blocked
+                    do Screen.drawRectangle(x * 16, y * 16, (x * 16) + 16, (y * 16) + 16);
+                }
+                let x = x + 1;
+            }
+            let y = y + 1;
+            let x = 0;
+        }
+
+        // draw the player
+        if (player.getDir() = Direction.U()) {
+            do Screen.drawLine((player.getX() * 16) + 4, (player.getY() * 16) + 12, (player.getX() * 16) + 8, (player.getY() * 16) + 4);
+            do Screen.drawLine((player.getX() * 16) + 8, (player.getY() * 16) + 4, (player.getX() * 16) + 12, (player.getY() * 16) + 12);
+        }
+        if (player.getDir() = Direction.D()) {
+            do Screen.drawLine((player.getX() * 16) + 4, (player.getY() * 16) + 4, (player.getX() * 16) + 8, (player.getY() * 16) + 12);
+            do Screen.drawLine((player.getX() * 16) + 8, (player.getY() * 16) + 12, (player.getX() * 16) + 12, (player.getY() * 16) + 4);
+        }
+        if (player.getDir() = Direction.L()) {
+            do Screen.drawLine((player.getX() * 16) + 12, (player.getY() * 16) + 4, (player.getX() * 16) + 4, (player.getY() * 16) + 8);
+            do Screen.drawLine((player.getX() * 16) + 4, (player.getY() * 16) + 8, (player.getX() * 16) + 12, (player.getY() * 16) + 12);
+        }
+        if (player.getDir() = Direction.R()) {
+            do Screen.drawLine((player.getX() * 16) + 4, (player.getY() * 16) + 4, (player.getX() * 16) + 12, (player.getY() * 16) + 8);
+            do Screen.drawLine((player.getX() * 16) + 12, (player.getY() * 16) + 8, (player.getX() * 16) + 4, (player.getY() * 16) + 12);
+        }
+        return;
+    }
+}

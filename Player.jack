@@ -1,0 +1,38 @@
+class Player {
+    field int x, y, dir; // the map coordinates and faced direction of the player
+
+    constructor Player new(int aX, int aY, int aDir) {
+        let x = aX;
+        let y = aY;
+        let dir = aDir;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void moveTo(int aX, int aY) {
+        let x = aX;
+        let y = aY;
+        return;
+    }
+
+    method void setDir(Direction d) {
+        let dir = d;
+        return;        
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getDir() {
+        return dir;
+    }
+}

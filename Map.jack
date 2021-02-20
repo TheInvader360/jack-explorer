@@ -1,0 +1,53 @@
+class Map {
+    field Array tiles; // the map's tiles (16x10 grid)
+
+    constructor Map new() {
+        let tiles = Array.new(160);
+        do clear();
+        return this;
+    }
+
+    method void dispose() {
+        do tiles.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void load(int mapID) {
+        do clear();
+        if (mapID = 1) {
+            do parseMapData("bbbbbbbbbbbbbbbbb   b      b   bb   b      b   bb              bb              bb              bb      bbbbb   bb   b      b   bb   b      bbbbbbbbbbbbbbbbbbbbb");
+        }
+        return;
+    }
+
+    method void clear() {
+        var int i;
+        let i = 0;
+        while (i < 160) {
+            let tiles[i] = 0;
+            let i = i + 1;
+        }
+        return;
+    }
+
+    method int getTile(int x, int y) {
+        return tiles[(y * 16) + x];
+    }
+
+    method void parseMapData(String encoded) {
+        var int x, y;
+        var char val;
+        let x = 0;
+        let y = 0;
+        while (y < 10) {
+            while (x < 16) {
+                let tiles[(y * 16) + x] = encoded.charAt((y * 16) + x);
+                let x = x + 1;
+            }
+            let y = y + 1;
+            let x = 0;
+        }
+        return;
+    }
+}

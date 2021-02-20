@@ -1,0 +1,56 @@
+class Controller {
+    field Model model;
+
+    constructor Controller new(Model aModel) {
+        let model = aModel;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void handleInput() {
+        var Map map;
+        var Player player;
+        var char key;
+        var int targetX, targetY, targetTile;
+        let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
+        let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
+
+        while (key = 0) { // waits for a key to be pressed
+            let key = Keyboard.keyPressed();
+        }
+
+        if ((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R())) {
+            let targetX = player.getX();
+            let targetY = player.getY();
+            if (key = Direction.U()) {
+                let targetY = targetY - 1;
+            }
+            if (key = Direction.D()) {
+                let targetY = targetY + 1;
+            }
+            if (key = Direction.L()) {
+                let targetX = targetX - 1;
+            }
+            if (key = Direction.R()) {
+                let targetX = targetX + 1;
+            }
+
+            let targetTile = map.getTile(targetX, targetY);
+            if (~(targetTile = 98)) { // b = blocked
+                do player.moveTo(targetX, targetY); // move if target tile not blocked
+            }
+
+            do player.setDir(key); // always face the input direction
+        }
+
+        while (~(key = 0)) { // waits for the key to be released
+            let key = Keyboard.keyPressed();
+        }
+
+        return;
+    }
+}

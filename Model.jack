@@ -1,0 +1,26 @@
+class Model {
+    field Map map;
+    field Player player;
+
+    constructor Model new() {
+        let map = Map.new();
+        do map.load(1);
+        let player = Player.new(2, 2, Direction.D());
+        return this;
+    }
+
+    method void dispose() {
+        do map.dispose();
+        do player.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method Map getMap() {
+        return map;
+    }
+
+    method Player getPlayer() {
+        return player;
+    }
+}
