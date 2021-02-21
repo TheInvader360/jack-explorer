@@ -30,9 +30,77 @@ class View {
         while (y < 10) {
             while (x < 16) {
                 let tile = map.getTile(x, y);
-                if (tile = 98) { // b = blocked
-                    // do Screen.drawRectangle(x * 16, y * 16, (x * 16) + 15, (y * 16) + 15);
+                if (tile = 97) { // a
+                    do Sprites.drawDoorOpen(x + (y * 512));
+                }
+                if (tile = 98) { // b
+                    do Sprites.drawGrass(x + (y * 512));
+                }
+                if (tile = 99) { // c
+                    do Sprites.drawMonolith(x + (y * 512));
+                }
+                if (tile = 100) { // d
+                    do Sprites.drawRockBL(x + (y * 512));
+                }
+                if (tile = 101) { // e
+                    do Sprites.drawRockBR(x + (y * 512));
+                }
+                if (tile = 102) { // f
+                    do Sprites.drawRockM(x + (y * 512));
+                }
+                if (tile = 103) { // g
+                    do Sprites.drawRockTL(x + (y * 512));
+                }
+                if (tile = 104) { // h
+                    do Sprites.drawRockTR(x + (y * 512));
+                }
+                if (tile = 105) { // i
+                    do Sprites.drawRubble(x + (y * 512));
+                }
+                if (tile = 106) { // j
+                    do Sprites.drawSkull(x + (y * 512));
+                }
+                if (tile = 107) { // k
+                    do Sprites.drawStalagmite(x + (y * 512));
+                }
+                if (tile = 108) { // l
+                    do Sprites.drawTreeBare(x + (y * 512));
+                }
+                if (tile = 109) { // m
                     do Sprites.drawTreeBushy(x + (y * 512));
+                }
+                if (tile = 110) { // n
+                    do Sprites.drawWaterB(x + (y * 512));
+                }
+                if (tile = 111) { // o
+                    do Sprites.drawWaterBL(x + (y * 512));
+                }
+                if (tile = 112) { // p
+                    do Sprites.drawWaterBL2(x + (y * 512));
+                }
+                if (tile = 113) { // q
+                    do Sprites.drawWaterBR(x + (y * 512));
+                }
+                if (tile = 114) { // r
+                    do Sprites.drawWaterL(x + (y * 512));
+                }
+                if (tile = 115) { // s
+                    do Sprites.drawWaterM(x + (y * 512));
+                }
+                if (tile = 116) { // t
+                    do Sprites.drawWaterR(x + (y * 512));
+                }
+                if (tile = 117) { // u
+                    do Sprites.drawWaterT(x + (y * 512));
+                }
+                if (tile = 118) { // v
+                    do Sprites.drawWaterTL(x + (y * 512));
+                }
+                if (tile = 119) { // w
+                    do Sprites.drawWaterTR(x + (y * 512));
+                }
+                if (tile = 120) { // x
+                    do Sprites.drawWaterTR2(x + (y * 512));
                 }
                 let x = x + 1;
             }

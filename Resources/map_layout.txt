@@ -1,0 +1,13 @@
+1:
+mmmmmmmmmmmmmmff
+mmmmmmmmmmmbbbff
+mmmmmmm---bbbbdf
+mmmmvuuuuwbbcbbf
+mm--opssst-bbb-f
+mm---rsssxw-b--f
+mm---onnnpxw---f
+mm-------opt--gf
+m---------oq--ff
+m-------------ff
+"mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff"
+

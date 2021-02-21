@@ -56,10 +56,9 @@ class Controller {
             }
 
             let targetTile = map.getTile(targetX, targetY);
-            if (~(targetTile = 98)) { // b = blocked
+            if ((targetTile = 45) | (targetTile = 98)) { // "-" (empty) and "b" (grass) tiles are walkable
                 do player.moveTo(targetX, targetY); // move if target tile not blocked
             }
-
             do player.setDir(key); // always face the input direction
         }
 

@@ -36,28 +36,28 @@ class Map {
     method void load(int roomID) {
         do clear();
         if (roomID = 1) {
-            do parseTileData("bbbbbbbbbbbbbbbbb              bb              bb              bb              bb              bb              bb              bb              bb              b");
+            do parseTileData("mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff");
             let linkedRoomU = -1;
             let linkedRoomD = 4;
             let linkedRoomL = -1;
             let linkedRoomR = 2;
         }
         if (roomID = 2) {
-            do parseTileData("bbbbbbbbbbbbbbbbb              bb              bb              bb              bb              bb              bb              bb              bb              b");
+            do parseTileData("mmmmmmmmmmmmmmmmm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------m");
             let linkedRoomU = -1;
             let linkedRoomD = 5;
             let linkedRoomL = 1;
             let linkedRoomR = -1;
         }
         if (roomID = 4) {
-            do parseTileData("b              bb              bb              bb              bb               b               b               b               b               bbbbbbbbbbbbbbbb");
+            do parseTileData("m-------------mmm--------------mm--------------mm--------------mm---------------m---------------m---------------m---------------m---------------mmmmmmmmmmmmmmmm");
             let linkedRoomU = 1;
             let linkedRoomD = -1;
             let linkedRoomL = -1;
             let linkedRoomR = 5;
         }
         if (roomID = 5) {
-            do parseTileData("b              bb              bb              bb              b               b               b               b               b               bbbbbbbbbbbbbbbbb");
+            do parseTileData("m--------------mm--------------mm--------------mm--------------m---------------m---------------m---------------m---------------m---------------mmmmmmmmmmmmmmmmm");
             let linkedRoomU = 2;
             let linkedRoomD = -1;
             let linkedRoomL = 4;
