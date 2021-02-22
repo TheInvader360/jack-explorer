@@ -43,21 +43,21 @@ class Map {
             let linkedRoomR = 2;
         }
         if (roomID = 2) {
-            do parseTileData("mmmmmmmmmmmmmmmmm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------mm--------------m");
+            do parseTileData("ffffffffffffffffffffffffffffffffffe-idfffffffffffe------dfaffffffk-----------dfff-------------fffh-----------ifffffffh--------ffffffffh-------fffffffffk------ff");
             let linkedRoomU = -1;
             let linkedRoomD = 5;
             let linkedRoomL = 1;
             let linkedRoomR = -1;
         }
         if (roomID = 4) {
-            do parseTileData("m-------------mmm--------------mm--------------mm--------------mm---------------m---------------m---------------m---------------m---------------mmmmmmmmmmmmmmmm");
+            do parseTileData("l-------------ffl----b------b-ffllb-----------ffll----l-------dfll---ll--------dlll--ll--b---b--lllj-lll--------lll--lll--------llllllllll---b--llllllllllllllll");
             let linkedRoomU = 1;
             let linkedRoomD = -1;
             let linkedRoomL = -1;
             let linkedRoomR = 5;
         }
         if (roomID = 5) {
-            do parseTileData("m--------------mm--------------mm--------------mm--------------m---------------m---------------m---------------m---------------m---------------mmmmmmmmmmmmmmmmm");
+            do parseTileData("fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff");
             let linkedRoomU = 2;
             let linkedRoomD = -1;
             let linkedRoomL = 4;
