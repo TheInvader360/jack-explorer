@@ -1,18 +1,18 @@
-Features:
+### Features
 
-[x] walk around map (tile based)
-[x] move between linked map rooms (i.e. cross screen boundary)
-[ ] text panel (e.g. action descriptions, debug output, etc)
-[ ] teleport between locations (i.e. enter/exit dungeon)
-[ ] info panel (e.g. arrows, gold, keys, health, bestiary, etc)
-[ ] item pickup (e.g. arrows, gold, key, health, macguffin, etc)
-[ ] player attack (i.e. shoot arrow in faced direction)
-[ ] simple enemies (random movement, shoot on line of sight, random loot, etc)
-[ ] player health and gameover/restart
-[ ] locked doors (unlocking consumes a key)
-[ ] boss fight (high health, bullet hell, etc)
+- [x] walk around map (tile based)
+- [x] move between linked map rooms (i.e. cross screen boundary)
+- [ ] text panel (e.g. action descriptions, debug output, etc)
+- [ ] teleport between locations (i.e. enter/exit dungeon)
+- [ ] info panel (e.g. arrows, gold, keys, health, bestiary, etc)
+- [ ] item pickup (e.g. arrows, gold, key, health, macguffin, etc)
+- [ ] player attack (i.e. shoot arrow in faced direction)
+- [ ] simple enemies (random movement, shoot on line of sight, random loot, etc)
+- [ ] player health and gameover/restart
+- [ ] locked doors (unlocking consumes a key)
+- [ ] boss fight (high health, bullet hell, etc)
 
-Intro:
+### Intro
 
 * Our land is dying.
 * Only the power of the Uniforce can restore it.
@@ -25,7 +25,7 @@ Intro:
 * And save our land!
 * (press the space key to start)
 
-Rooms:
+### Rooms
 
 1. (link 2)
 * player can move around
@@ -47,20 +47,35 @@ Rooms:
 * player has boss to contend with (blocking path and must be defeated to continue)
 * player can loot chest to get macguffin
 
-Notes:
+### Notes
 
 if player loses all health, gameover - replace player sprite with grave spite, display message in text panel:
-```You were defeated! Press the space key to start again...```
+
+```
+You were defeated! Press the space key to start again...
+```
 
 if player defeats dragon, display message in text panel:
-```You defeated the dragon! Now find the Uniforce...```
+
+```
+You defeated the dragon! Now find the Uniforce...
+```
 
 if player gets macguffin, display message in text panel:
-```You found the Uniforce! Now take it to the Monolith...```
+
+```
+You found the Uniforce! Now take it to the Monolith...
+```
 
 if player interacts with monolith, display message in text panel:
-(if has macguffin) ```The Uniforce activated the Monolith and our land was saved!```
-(else) ```The Uniforce can activate this Monolith to save our land!```
+
+```
+The Uniforce activated the Monolith and our land was saved! (if has macguffin)
+The Uniforce can activate this Monolith to save our land! (else)
+```
 
 on completion, display a success slide in game window, display message in text panel:
-```A WINNER IS YOU! Press the space key to exit...```
+
+```
+A WINNER IS YOU! Press the space key to exit...
+```

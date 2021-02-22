@@ -15,49 +15,61 @@ class Controller {
         var Map map;
         var Player player;
         var char key;
-        var int targetX, targetY, targetTile;
+        var int startRoom, nextRoom, currentX, currentY, targetX, targetY, targetTile;
         let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
         let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
+        let startRoom = map.getCurrentRoom(); // keep a reference to the current room in case it needs to be reloaded
+        let nextRoom = 0;
 
         while (key = 0) { // waits for a key to be pressed
             let key = Keyboard.keyPressed();
         }
 
         if ((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R())) {
+            let currentX = player.getX();
+            let currentY = player.getY();
             let targetX = player.getX();
             let targetY = player.getY();
             if (key = Direction.U()) {
                 let targetY = targetY - 1;
                 if (targetY < 0) {
-                    do map.loadLinkedRoom(Direction.U());
+                    let nextRoom = map.getLinkedRoom(Direction.U());
                     let targetY = 9;
                 }
             }
             if (key = Direction.D()) {
                 let targetY = targetY + 1;
                 if (targetY > 9) {
-                    do map.loadLinkedRoom(Direction.D());
+                    let nextRoom = map.getLinkedRoom(Direction.D());
                     let targetY = 0;
                 }
             }
             if (key = Direction.L()) {
                 let targetX = targetX - 1;
                 if (targetX < 0) {
-                    do map.loadLinkedRoom(Direction.L());
+                    let nextRoom = map.getLinkedRoom(Direction.L());
                     let targetX = 15;
                 }
             }
             if (key = Direction.R()) {
                 let targetX = targetX + 1;
                 if (targetX > 15) {
-                    do map.loadLinkedRoom(Direction.R());
+                    let nextRoom = map.getLinkedRoom(Direction.R());
                     let targetX = 0;
                 }
+            }
+
+            if (nextRoom > 0) {
+                do map.load(nextRoom);
             }
 
             let targetTile = map.getTile(targetX, targetY);
             if ((targetTile = 45) | (targetTile = 98)) { // "-" (empty) and "b" (grass) tiles are walkable
                 do player.moveTo(targetX, targetY); // move if target tile not blocked
+            } else {
+                if (nextRoom > 0) {
+                    do map.load(startRoom); // if move was blocked, revert to the start room
+                }
             }
             do player.setDir(key); // always face the input direction
         }
