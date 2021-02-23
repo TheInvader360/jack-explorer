@@ -5,15 +5,27 @@ class Map {
     field int linkedRoomD;
     field int linkedRoomL;
     field int linkedRoomR;
+    field String room1;
+    field String room2;
+    field String room4;
+    field String room5;
 
     constructor Map new() {
         let tiles = Array.new(160);
         do clear();
+        let room1 = "mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff";
+        let room2 = "ffffffffffffffffffffffffffffffffffe-idfffffffffffe------dfaffffffk-----------dfff-------------fffh-----------ifffffffh--------ffffffffh-------fffffffffk------ff";
+        let room4 = "l-------------ffl----b------b-ffllb-----------ffll----l-------dfll---ll--------dlll--ll--b---b--lllj-lll--------lll--lll--------llllllllll---b--llllllllllllllll";
+        let room5 = "fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff";
         return this;
     }
 
     method void dispose() {
         do tiles.dispose();
+        do room1.dispose();
+        do room2.dispose();
+        do room4.dispose();
+        do room5.dispose();
         do Memory.deAlloc(this);
         return;
     }
@@ -21,28 +33,28 @@ class Map {
     method void load(int roomID) {
         do clear();
         if (roomID = 1) {
-            do parseTileData("mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff");
+            do parseTileData(room1);
             let linkedRoomU = 0;
             let linkedRoomD = 4;
             let linkedRoomL = 0;
             let linkedRoomR = 2;
         }
         if (roomID = 2) {
-            do parseTileData("ffffffffffffffffffffffffffffffffffe-idfffffffffffe------dfaffffffk-----------dfff-------------fffh-----------ifffffffh--------ffffffffh-------fffffffffk------ff");
+            do parseTileData(room2);
             let linkedRoomU = 0;
             let linkedRoomD = 5;
             let linkedRoomL = 1;
             let linkedRoomR = 0;
         }
         if (roomID = 4) {
-            do parseTileData("l-------------ffl----b------b-ffllb-----------ffll----l-------dfll---ll--------dlll--ll--b---b--lllj-lll--------lll--lll--------llllllllll---b--llllllllllllllll");
+            do parseTileData(room4);
             let linkedRoomU = 1;
             let linkedRoomD = 0;
             let linkedRoomL = 0;
             let linkedRoomR = 5;
         }
         if (roomID = 5) {
-            do parseTileData("fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff");
+            do parseTileData(room5);
             let linkedRoomU = 2;
             let linkedRoomD = 0;
             let linkedRoomL = 4;
