@@ -2,14 +2,14 @@
 mmmmmmmmmmmmmmff
 mmmmmmmmmmmbbbff
 mmmmmmm---bbbbdf
-mmmmvuuuuwbbcbbf
-mm--opssst-bbb-f
-mm---rsssxw-b--f
-mm---onnnpxw---f
-mm-------opt--gf
-m---------oq--ff
+mmmmwvvvvxbbcbbf
+mm--pqtttu-bbb-f
+mm---stttyx-b--f
+mm---poooqyx---f
+mm-------pqu--gf
+m---------pr--ff
 m-------------ff
-"mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff"
+"mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmwvvvvxbbcbbfmm--pqtttu-bbb-fmm---stttyx-b--fmm---poooqyx---fmm-------pqu--gfm---------pr--ffm-------------ff"
 
 2:
 ffffffffffffffff
@@ -54,4 +54,14 @@ llllllgfffffffff
 "fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff"
 
 6:
-TODO
+nnnnnnnnnnnnnnnn
+nnnfffffffffffnn
+nnfek---k---idfn
+nnf--kk-------fn
+nnf--i-k---k--fn
+nnf-i----k----fn
+nnf-------k-igfn
+nnfh------k-kfnn
+nnnffffh-gffffnn
+nnnnnnnf-fnnnnnn
+"nnnnnnnnnnnnnnnnnnnfffffffffffnnnnfek---k---idfnnnf--kk-------fnnnf--i-k---k--fnnnf-i----k----fnnnf-------k-igfnnnfh------k-kfnnnnnffffh-gffffnnnnnnnnnf-fnnnnnn"

@@ -1,5 +1,7 @@
 class Map {
     field Array tiles; // the map's tiles (16x10 grid)
+    field int numTeleporters;
+    field Array teleporters;
     field int currentRoom;
     field int linkedRoomU;
     field int linkedRoomD;
@@ -9,14 +11,20 @@ class Map {
     field String room2;
     field String room4;
     field String room5;
+    field String room6;
 
     constructor Map new() {
         let tiles = Array.new(160);
+        let numTeleporters = 2;
+        let teleporters = Array.new(numTeleporters);
         do clear();
-        let room1 = "mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmvuuuuwbbcbbfmm--opssst-bbb-fmm---rsssxw-b--fmm---onnnpxw---fmm-------opt--gfm---------oq--ffm-------------ff";
+        let room1 = "mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmwvvvvxbbcbbfmm--pqtttu-bbb-fmm---stttyx-b--fmm---poooqyx---fmm-------pqu--gfm---------pr--ffm-------------ff";
         let room2 = "ffffffffffffffffffffffffffffffffffe-idfffffffffffe------dfaffffffk-----------dfff-------------fffh-----------ifffffffh--------ffffffffh-------fffffffffk------ff";
         let room4 = "l-------------ffl----b------b-ffllb-----------ffll----l-------dfll---ll--------dlll--ll--b---b--lllj-lll--------lll--lll--------llllllllll---b--llllllllllllllll";
         let room5 = "fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff";
+        let room6 = "nnnnnnnnnnnnnnnnnnnfffffffffffnnnnfek---k---idfnnnf--kk-------fnnnf--i-k---k--fnnnf-i----k----fnnnf-------k-igfnnnfh------k-kfnnnnnffffh-gffffnnnnnnnnnf-fnnnnnn";
+        let teleporters[0] = Teleporter.new(10, 3, 2, 8, 8, 6, Direction.U());
+        let teleporters[1] = Teleporter.new(8, 9, 6, 10, 4, 2, Direction.D());
         return this;
     }
 
@@ -26,6 +34,7 @@ class Map {
         do room2.dispose();
         do room4.dispose();
         do room5.dispose();
+        do room6.dispose();
         do Memory.deAlloc(this);
         return;
     }
@@ -58,6 +67,13 @@ class Map {
             let linkedRoomU = 2;
             let linkedRoomD = 0;
             let linkedRoomL = 4;
+            let linkedRoomR = 0;
+        }
+        if (roomID = 6) {
+            do parseTileData(room6);
+            let linkedRoomU = 0;
+            let linkedRoomD = 0;
+            let linkedRoomL = 0;
             let linkedRoomR = 0;
         }
         let currentRoom = roomID;
@@ -96,6 +112,20 @@ class Map {
 
     method int getCurrentRoom() {
         return currentRoom;
+    }
+
+    method Teleporter getTeleporter(int x, int y) {
+        var Teleporter t;
+        var int i;
+        let i = 0;
+        while (i < numTeleporters) {
+            let t = teleporters[i];
+            if ((t.getRoom() = currentRoom) & (t.getX() = x) & (t.getY() = y)) {
+                return t;
+            }
+            let i = i + 1;
+        }
+        return null;
     }
 
     method int getLinkedRoom(Direction d) {

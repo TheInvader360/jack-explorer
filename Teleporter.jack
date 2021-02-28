@@ -1,0 +1,47 @@
+class Teleporter {
+    field int x, y, room, destX, destY, destRoom, playerDir;
+
+    constructor Teleporter new(int aX, int aY, int aRoom, int aDestX, int aDestY, int aDestRoom, int aPlayerDir) {
+        let x = aX;
+        let y = aY;
+        let room = aRoom;
+        let destX = aDestX;
+        let destY = aDestY;
+        let destRoom = aDestRoom;
+        let playerDir = aPlayerDir;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int getRoom() {
+        return room;
+    }
+
+    method int getDestX() {
+        return destX;
+    }
+
+    method int getDestY() {
+        return destY;
+    }
+
+    method int getDestRoom() {
+        return destRoom;
+    }
+
+    method int getPlayerDir() {
+        return playerDir;
+    }
+}

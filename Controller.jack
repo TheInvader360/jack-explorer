@@ -14,6 +14,7 @@ class Controller {
     method void handleInput() {
         var Map map;
         var Player player;
+        var Teleporter teleporter;
         var char key;
         var int startRoom, nextRoom, currentX, currentY, targetX, targetY, targetTile;
         var String str;
@@ -22,10 +23,16 @@ class Controller {
         let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
         let startRoom = map.getCurrentRoom(); // keep a reference to the current room in case it needs to be reloaded
         let nextRoom = 0;
-        let str = "Invalid input!";
 
         while (key = 0) { // waits for a key to be pressed
             let key = Keyboard.keyPressed();
+        }
+
+        if (~((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R()))) {
+            let str = "Invalid input!";
+            do model.setMessage(str);
+            do str.dispose();
+            return;
         }
 
         if ((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R())) {
@@ -77,6 +84,14 @@ class Controller {
                 }
             }
             do player.setDir(key); // always face the input direction
+
+            let teleporter = map.getTeleporter(targetX, targetY);
+            if (~(teleporter = null)) {
+                let str = "Teleport!";
+                do map.load(teleporter.getDestRoom());
+                do player.moveTo(teleporter.getDestX(), teleporter.getDestY());
+                do player.setDir(teleporter.getPlayerDir());
+            }
         }
 
         while (~(key = 0)) { // waits for the key to be released

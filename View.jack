@@ -70,36 +70,39 @@ class View {
                     do Sprites.drawTreeBushy(x + (y * 512));
                 }
                 if (tile = 110) { // n
-                    do Sprites.drawWaterB(x + (y * 512));
+                    do Sprites.drawVoid(x + (y * 512));
                 }
                 if (tile = 111) { // o
-                    do Sprites.drawWaterBL(x + (y * 512));
+                    do Sprites.drawWaterB(x + (y * 512));
                 }
                 if (tile = 112) { // p
-                    do Sprites.drawWaterBL2(x + (y * 512));
+                    do Sprites.drawWaterBL(x + (y * 512));
                 }
                 if (tile = 113) { // q
-                    do Sprites.drawWaterBR(x + (y * 512));
+                    do Sprites.drawWaterBL2(x + (y * 512));
                 }
                 if (tile = 114) { // r
-                    do Sprites.drawWaterL(x + (y * 512));
+                    do Sprites.drawWaterBR(x + (y * 512));
                 }
                 if (tile = 115) { // s
-                    do Sprites.drawWaterM(x + (y * 512));
+                    do Sprites.drawWaterL(x + (y * 512));
                 }
                 if (tile = 116) { // t
-                    do Sprites.drawWaterR(x + (y * 512));
+                    do Sprites.drawWaterM(x + (y * 512));
                 }
                 if (tile = 117) { // u
-                    do Sprites.drawWaterT(x + (y * 512));
+                    do Sprites.drawWaterR(x + (y * 512));
                 }
                 if (tile = 118) { // v
-                    do Sprites.drawWaterTL(x + (y * 512));
+                    do Sprites.drawWaterT(x + (y * 512));
                 }
                 if (tile = 119) { // w
-                    do Sprites.drawWaterTR(x + (y * 512));
+                    do Sprites.drawWaterTL(x + (y * 512));
                 }
                 if (tile = 120) { // x
+                    do Sprites.drawWaterTR(x + (y * 512));
+                }
+                if (tile = 121) { // y
                     do Sprites.drawWaterTR2(x + (y * 512));
                 }
                 let x = x + 1;
