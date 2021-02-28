@@ -121,6 +121,11 @@ class View {
         if (player.getDir() = Direction.R()) {
             do Sprites.drawPlayerR(player.getX() + (player.getY() * 512));
         }
+
+        // draw the message panel
+        do Output.moveCursor(16, 2);
+        do Output.printString(model.getMessage());
+        
         return;
     }
 }

@@ -1,17 +1,20 @@
 class Model {
     field Map map;
     field Player player;
+    field String message; // e.g. "The Uniforce activated the Monolith and our land was saved!"
 
     constructor Model new() {
         let map = Map.new();
         do map.load(1);
         let player = Player.new(13, 3, Direction.D());
+        let message = "";
         return this;
     }
 
     method void dispose() {
         do map.dispose();
         do player.dispose();
+        do message.dispose();
         do Memory.deAlloc(this);
         return;
     }
@@ -22,5 +25,14 @@ class Model {
 
     method Player getPlayer() {
         return player;
+    }
+
+    method String getMessage() {
+        return message;
+    }
+
+    method void setMessage(String aMessage) {
+        let message = aMessage;
+        return;        
     }
 }

@@ -16,10 +16,13 @@ class Controller {
         var Player player;
         var char key;
         var int startRoom, nextRoom, currentX, currentY, targetX, targetY, targetTile;
+        var String str;
+
         let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
         let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
         let startRoom = map.getCurrentRoom(); // keep a reference to the current room in case it needs to be reloaded
         let nextRoom = 0;
+        let str = "Invalid input!";
 
         while (key = 0) { // waits for a key to be pressed
             let key = Keyboard.keyPressed();
@@ -30,7 +33,7 @@ class Controller {
             let currentY = player.getY();
             let targetX = player.getX();
             let targetY = player.getY();
-            if (key = Direction.U()) {
+            if (key = Direction.U()) {    
                 let targetY = targetY - 1;
                 if (targetY < 0) {
                     let nextRoom = map.getLinkedRoom(Direction.U());
@@ -65,10 +68,12 @@ class Controller {
 
             let targetTile = map.getTile(targetX, targetY);
             if ((targetTile = 45) | (targetTile = 98)) { // "-" (empty) and "b" (grass) tiles are walkable
+                let str = "";
                 do player.moveTo(targetX, targetY); // move if target tile not blocked
-            } else {
+            } else { // move was blocked...
+                let str = "Move blocked!";
                 if (nextRoom > 0) {
-                    do map.load(startRoom); // if move was blocked, revert to the start room
+                    do map.load(startRoom); // ...revert to the start room
                 }
             }
             do player.setDir(key); // always face the input direction
@@ -77,6 +82,9 @@ class Controller {
         while (~(key = 0)) { // waits for the key to be released
             let key = Keyboard.keyPressed();
         }
+
+        do model.setMessage(str);
+        do str.dispose();
 
         return;
     }

@@ -2,7 +2,7 @@
 
 - [x] walk around map (tile based)
 - [x] move between linked map rooms (i.e. cross screen boundary)
-- [ ] text panel (e.g. action descriptions, debug output, etc)
+- [x] message panel (e.g. action descriptions, debug output, etc)
 - [ ] teleport between locations (i.e. enter/exit dungeon)
 - [ ] info panel (e.g. arrows, gold, keys, health, bestiary, etc)
 - [ ] item pickup (e.g. arrows, gold, key, health, macguffin, etc)
