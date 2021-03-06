@@ -14,92 +14,104 @@ class Controller {
     method void handleInput() {
         var Map map;
         var Player player;
+        var Projectile playerProjectile;
         var Teleporter teleporter;
         var char key;
         var int startRoom, nextRoom, currentX, currentY, targetX, targetY, targetTile;
+        var boolean roomChanged;
         var String str;
 
         let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
         let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
+        let playerProjectile = player.getProjectile(); // chained method calls aren't supported (i.e. model.getPlayer().getProjectile() fails)
         let startRoom = map.getCurrentRoom(); // keep a reference to the current room in case it needs to be reloaded
         let nextRoom = 0;
+        let roomChanged = false;
 
-        while (key = 0) { // waits for a key to be pressed
-            let key = Keyboard.keyPressed();
-        }
+        let key = Keyboard.keyPressed();
+        if (~(key = 0)) {
 
-        if (~((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R()))) {
-            let str = "Invalid input!";
+            if (~((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R()) | (key = 32))) {
+                let str = "Invalid input!";
+                do model.setMessage(str);
+                do str.dispose();
+                return;
+            }
+
+            if ((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R())) {
+                let currentX = player.getX();
+                let currentY = player.getY();
+                let targetX = player.getX();
+                let targetY = player.getY();
+                if (key = Direction.U()) {    
+                    let targetY = targetY - 1;
+                    if (targetY < 0) {
+                        let nextRoom = map.getLinkedRoom(Direction.U());
+                        let targetY = 9;
+                    }
+                }
+                if (key = Direction.D()) {
+                    let targetY = targetY + 1;
+                    if (targetY > 9) {
+                        let nextRoom = map.getLinkedRoom(Direction.D());
+                        let targetY = 0;
+                    }
+                }
+                if (key = Direction.L()) {
+                    let targetX = targetX - 1;
+                    if (targetX < 0) {
+                     let nextRoom = map.getLinkedRoom(Direction.L());
+                        let targetX = 15;
+                    }
+                }
+                if (key = Direction.R()) {
+                    let targetX = targetX + 1;
+                    if (targetX > 15) {
+                        let nextRoom = map.getLinkedRoom(Direction.R());
+                        let targetX = 0;
+                    }
+                }
+
+                if (nextRoom > 0) {
+                    do map.load(nextRoom);
+                    let roomChanged = true;
+                }
+
+                let targetTile = map.getTile(targetX, targetY);
+                if ((targetTile = 45) | (targetTile = 98)) { // "-" (empty) and "b" (grass) tiles are walkable
+                    let str = "";
+                    do player.moveTo(targetX, targetY); // move if target tile not blocked
+                } else { // move was blocked...
+                    let str = "Move blocked!";
+                    if (nextRoom > 0) {
+                        do map.load(startRoom); // ...revert to the start room
+                        let roomChanged = false;
+                    }
+                }
+                do player.setDir(key); // always face the input direction
+
+                let teleporter = map.getTeleporter(targetX, targetY);
+                if (~(teleporter = null)) {
+                    let str = "Teleport!";
+                    do map.load(teleporter.getDestRoom());
+                    do player.moveTo(teleporter.getDestX(), teleporter.getDestY());
+                    do player.setDir(teleporter.getPlayerDir());
+                    let roomChanged = true;
+                }
+            }
+
+            if (key = 32) {
+                let str = "";
+                do player.tryLaunchProjectile();
+            }
+
+            if (roomChanged) {
+                do playerProjectile.deactivate();
+            }
+            
             do model.setMessage(str);
             do str.dispose();
-            return;
         }
-
-        if ((key = Direction.U()) | (key = Direction.D()) | (key = Direction.L()) | (key = Direction.R())) {
-            let currentX = player.getX();
-            let currentY = player.getY();
-            let targetX = player.getX();
-            let targetY = player.getY();
-            if (key = Direction.U()) {    
-                let targetY = targetY - 1;
-                if (targetY < 0) {
-                    let nextRoom = map.getLinkedRoom(Direction.U());
-                    let targetY = 9;
-                }
-            }
-            if (key = Direction.D()) {
-                let targetY = targetY + 1;
-                if (targetY > 9) {
-                    let nextRoom = map.getLinkedRoom(Direction.D());
-                    let targetY = 0;
-                }
-            }
-            if (key = Direction.L()) {
-                let targetX = targetX - 1;
-                if (targetX < 0) {
-                    let nextRoom = map.getLinkedRoom(Direction.L());
-                    let targetX = 15;
-                }
-            }
-            if (key = Direction.R()) {
-                let targetX = targetX + 1;
-                if (targetX > 15) {
-                    let nextRoom = map.getLinkedRoom(Direction.R());
-                    let targetX = 0;
-                }
-            }
-
-            if (nextRoom > 0) {
-                do map.load(nextRoom);
-            }
-
-            let targetTile = map.getTile(targetX, targetY);
-            if ((targetTile = 45) | (targetTile = 98)) { // "-" (empty) and "b" (grass) tiles are walkable
-                let str = "";
-                do player.moveTo(targetX, targetY); // move if target tile not blocked
-            } else { // move was blocked...
-                let str = "Move blocked!";
-                if (nextRoom > 0) {
-                    do map.load(startRoom); // ...revert to the start room
-                }
-            }
-            do player.setDir(key); // always face the input direction
-
-            let teleporter = map.getTeleporter(targetX, targetY);
-            if (~(teleporter = null)) {
-                let str = "Teleport!";
-                do map.load(teleporter.getDestRoom());
-                do player.moveTo(teleporter.getDestX(), teleporter.getDestY());
-                do player.setDir(teleporter.getPlayerDir());
-            }
-        }
-
-        while (~(key = 0)) { // waits for the key to be released
-            let key = Keyboard.keyPressed();
-        }
-
-        do model.setMessage(str);
-        do str.dispose();
 
         return;
     }

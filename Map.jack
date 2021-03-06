@@ -17,14 +17,14 @@ class Map {
         let tiles = Array.new(160);
         let numTeleporters = 2;
         let teleporters = Array.new(numTeleporters);
+        let teleporters[0] = Teleporter.new(10, 3, 2, 8, 8, 6, Direction.U());
+        let teleporters[1] = Teleporter.new(8, 9, 6, 10, 4, 2, Direction.D());
         do clear();
         let room1 = "mmmmmmmmmmmmmmffmmmmmmmmmmmbbbffmmmmmmm---bbbbdfmmmmwvvvvxbbcbbfmm--pqtttu-bbb-fmm---stttyx-b--fmm---poooqyx---fmm-------pqu--gfm---------pr--ffm-------------ff";
         let room2 = "ffffffffffffffffffffffffffffffffffe-idfffffffffffe------dfaffffffk-----------dfff-------------fffh-----------ifffffffh--------ffffffffh-------fffffffffk------ff";
         let room4 = "l-------------ffl----b------b-ffllb-----------ffll----l-------dfll---ll--------dlll--ll--b---b--lllj-lll--------lll--lll--------llllllllll---b--llllllllllllllll";
         let room5 = "fffffff------ifffffffffi------ffffffffe------gffffffff-------ffffffffe------gfff-dffe-------ffff-----------gffff---------igfffff--------gfffffffllllllgfffffffff";
         let room6 = "nnnnnnnnnnnnnnnnnnnfffffffffffnnnnfek---k---idfnnnf--kk-------fnnnf--i-k---k--fnnnf-i----k----fnnnf-------k-igfnnnfh------k-kfnnnnnffffh-gffffnnnnnnnnnf-fnnnnnn";
-        let teleporters[0] = Teleporter.new(10, 3, 2, 8, 8, 6, Direction.U());
-        let teleporters[1] = Teleporter.new(8, 9, 6, 10, 4, 2, Direction.D());
         return this;
     }
 

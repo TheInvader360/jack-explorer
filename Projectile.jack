@@ -1,0 +1,65 @@
+class Projectile {
+    field int x, y, dir, range; // the tile coordinates, movement direction, and remaining range of the projectile
+
+    constructor Projectile new() {
+        let x = 0;
+        let y = 0;
+        let dir = Direction.U();
+        let range = 0;
+        return this;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    }
+
+    method void launch(int aX, int aY, int aDir) {
+        if (~isActive()) {
+            let x = aX;
+            let y = aY;
+            let dir = aDir;
+            let range = 5;
+        }
+        return;
+    }
+
+    method void update() {
+        if (range > 0) {
+            if (dir = Direction.U()) {    
+                let y = y - 1;
+            }
+            if (dir = Direction.D()) {    
+                let y = y + 1;
+            }
+            if (dir = Direction.L()) {    
+                let x = x - 1;
+            }
+            if (dir = Direction.R()) {    
+                let x = x + 1;
+            }
+            let range = range - 1;
+        }
+        if ((x < 0) | (x > 15) | (y < 0) | (y > 9)) {
+            let range = 0;
+        }
+        return;
+    }
+
+    method int getX() {
+        return x;
+    }
+
+    method int getY() {
+        return y;
+    }
+
+    method int isActive() {
+        return (range > 0);
+    }
+
+    method void deactivate() {
+        let range = 0;
+        return;
+    }
+}

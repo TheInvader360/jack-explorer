@@ -19,6 +19,11 @@ class Model {
         return;
     }
 
+    method void update() {
+        do player.update();
+        return;
+    }
+
     method Map getMap() {
         return map;
     }

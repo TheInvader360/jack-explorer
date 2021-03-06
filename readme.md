@@ -2,7 +2,7 @@
 
 A simple MVC "game" written in the Jack programming language (nand2tetris)
 
-Not much of a game as things stand, just walk around a featureless 16x10 map for all eternity:
+Not much of a game as things stand...
 
 ![Resources/demo.gif](Resources/demo.gif)
 

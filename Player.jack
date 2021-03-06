@@ -1,10 +1,12 @@
 class Player {
     field int x, y, dir; // the map coordinates and faced direction of the player
+    field Projectile projectile;
 
     constructor Player new(int aX, int aY, int aDir) {
         let x = aX;
         let y = aY;
         let dir = aDir;
+        let projectile = Projectile.new();
         return this;
     }
 
@@ -19,9 +21,19 @@ class Player {
         return;
     }
 
+    method void tryLaunchProjectile() {
+        do projectile.launch(x, y, dir);
+        return;
+    }
+
+    method void update() {
+        do projectile.update();
+        return;
+    }
+
     method void setDir(Direction d) {
         let dir = d;
-        return;        
+        return;
     }
 
     method int getX() {
@@ -34,5 +46,9 @@ class Player {
 
     method int getDir() {
         return dir;
+    }
+
+    method Projectile getProjectile() {
+        return projectile;
     }
 }

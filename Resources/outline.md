@@ -6,7 +6,7 @@
 - [x] teleport between locations (i.e. enter/exit dungeon)
 - [ ] info panel (e.g. arrows, gold, keys, health, bestiary, etc)
 - [ ] item pickup (e.g. arrows, gold, key, health, macguffin, etc)
-- [ ] player attack (i.e. shoot arrow in faced direction)
+- [x] player attack (i.e. shoot projectile in faced direction)
 - [ ] simple enemies (random movement, shoot on line of sight, random loot, etc)
 - [ ] player health and gameover/restart
 - [ ] locked doors (unlocking consumes a key)
@@ -14,38 +14,38 @@
 
 ### Intro
 
-* Our land is dying.
-* Only the power of the Uniforce can restore it.
-* It is hidden in the old abandoned mine...
-* Protected by a powerful dragon!
-* You, our saviour, must venture into the mine...
-* Defeat the dragon...
-* Retrieve the Uniforce...
-* Activate the Monolith...
-* And save our land!
-* (press the space key to start)
+- Our land is dying.
+- Only the power of the Uniforce can restore it.
+- It is hidden in the old abandoned mine...
+- Protected by a powerful dragon!
+- You, our saviour, must venture into the mine...
+- Defeat the dragon...
+- Retrieve the Uniforce...
+- Activate the Monolith...
+- And save our land!
+- (press the space key to start)
 
 ### Rooms
 
 1. (link 2)
-* player can move around
-* player can complete game by interacting with monolith if macguffin held
+- player can move around
+- player can complete game by interacting with monolith if macguffin held
 
 2. (link 1&3)
-* player can loot magic box to replenish arrows (limited arrows in quiver, unlimited arrows in magic box)
+- player can loot magic box to replenish arrows (limited arrows in quiver, unlimited arrows in magic box)
 
 3. (link 2&4)
-* player has a single enemy to contend with (kill or avoid)
+- player has a single enemy to contend with (kill or avoid)
 
 4. (teleport 5)
-* player has multiple enemies to contend with (one is blocking path and must be defeated to continue)
+- player has multiple enemies to contend with (one is blocking path and must be defeated to continue)
 
 5. (teleport 4&6)
-* player has multiple enemies to contend with
+- player has multiple enemies to contend with
 
 6. (teleport 5)
-* player has boss to contend with (blocking path and must be defeated to continue)
-* player can loot chest to get macguffin
+- player has boss to contend with (blocking path and must be defeated to continue)
+- player can loot chest to get macguffin
 
 ### Notes
 

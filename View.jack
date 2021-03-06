@@ -15,13 +15,15 @@ class View {
         var int x, y, tile;
         var Map map;
         var Player player;
+        var Projectile playerProjectile;
 
         let map = model.getMap(); // chained method calls aren't supported (i.e. model.getMap().getTile() fails)
         let player = model.getPlayer(); // chained method calls aren't supported (i.e. model.getPlayer().getX() fails)
+        let playerProjectile = player.getProjectile(); // chained method calls aren't supported (i.e. model.getPlayer().getProjectile() fails)
 
-        // clear the screen
+        // clear the message panel
         do Screen.setColor(false);
-        do Screen.drawRectangle(0, 0, 511, 255);
+        do Screen.drawRectangle(0, 176, 511, 192);
 
         // draw the map
         do Screen.setColor(true);
@@ -30,6 +32,9 @@ class View {
         while (y < 10) {
             while (x < 16) {
                 let tile = map.getTile(x, y);
+                if (tile = 45) { // -
+                    do Sprites.drawClear(x + (y * 512));
+                }
                 if (tile = 97) { // a
                     do Sprites.drawDoorOpen(x + (y * 512));
                 }
@@ -123,6 +128,11 @@ class View {
         }
         if (player.getDir() = Direction.R()) {
             do Sprites.drawPlayerR(player.getX() + (player.getY() * 512));
+        }
+
+        // draw the player's projectile
+        if (playerProjectile.isActive()) {
+            do Screen.drawCircle((playerProjectile.getX() * 16) + 8, (playerProjectile.getY() * 16) + 8, 2);
         }
 
         // draw the message panel
